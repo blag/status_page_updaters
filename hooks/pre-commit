@@ -1,0 +1,14 @@
+#!/bin/sh
+cleanup() {
+    rv=$?
+    if [ $rv -ne 0 ]; then
+        echo -e "\e[31mCode NOT committed because the tests failed. If you need to bypass this, add --no-verify to the commit command.\e[0m"
+    fi
+    exit $rv
+}
+trap "cleanup" INT TERM EXIT
+
+HOME=$(git rev-parse --show-toplevel)
+
+cd $HOME
+pytest
