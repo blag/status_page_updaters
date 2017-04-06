@@ -53,8 +53,8 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    package_dir={'': '.'},
-    packages=find_packages(),
+    package_dir={'': 'src'},
+    packages=find_packages('src/'),
 
     namespace_packages=[],
 
