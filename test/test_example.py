@@ -7,3 +7,6 @@ def test_imports():
 
 def test_false():
     assert mz_sample.foo(False) == 'jkl'
+
+def test_not_staged():
+    import mz_sample.not_staged
