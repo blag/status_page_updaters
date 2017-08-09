@@ -5,12 +5,13 @@
 # the state the code would be in if this commit was
 # allowed.
 old_stash=$(git rev-parse -q --verify refs/stash)
-git stash save -q --keep-index
+git stash save -q -u --keep-index
 new_stash=$(git rev-parse -q --verify refs/stash)
 
 # Run tests
 HOME=$(git rev-parse --show-toplevel)
 cd $HOME
+pip install -e .
 pytest
 status=$?
 

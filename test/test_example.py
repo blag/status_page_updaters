@@ -1,6 +1,9 @@
+import mz_sample
 
 
 
 def test_imports():
-    import mz_sample
-    mz_sample.asdf
+    assert mz_sample.foo(True) == 'asdf'
+
+def test_false():
+    assert mz_sample.foo(False) == 'jkl'
