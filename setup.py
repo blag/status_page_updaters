@@ -9,6 +9,7 @@ from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
 from os import path
+from sys import version_info
 
 
 here = path.abspath(path.dirname(__file__))
@@ -16,6 +17,10 @@ here = path.abspath(path.dirname(__file__))
 # Get the long description from the README file
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
+
+setup_kwargs = {}
+if version_info < (3, 0):
+    setup_kwargs['use_2to3'] = True
 
 setup(
     name='mz_sample',
@@ -89,6 +94,6 @@ setup(
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # pip to create the appropriate form of executable for the target platform.
     entry_points={},
-    use_2to3=True,
-    zip_safe=False
+    zip_safe=False,
+    **setup_kwargs
 )
